@@ -1,0 +1,69 @@
+<mat-card class="login-card" *ngIf="!showVerifyEmail">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <form [formGroup]="loginForm">
+      <div>
+        <mat-form-field
+          appearance="legacy"
+          class="full-width"
+          [ngClass]="{ 'field-valid': loginForm.controls.username.valid }"
+        >
+          <mat-label>Username</mat-label>
+          <input
+            class="uncls"
+            matInput
+            placeholder="Username"
+            [formControl]="loginForm.controls.username"
+            matTooltip="Enter username"
+            [matTooltipPosition]="'before'"
+          />
+          <mat-error *ngIf="loginForm.controls.username.invalid">{{
+            getUsernameErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field
+          appearance="legacy"
+          class="full-width"
+          [ngClass]="{ 'field-valid': loginForm.controls.password.valid }"
+        >
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="Password"
+            matTooltip="Enter password"
+            [matTooltipPosition]="'before'"
+            [formControl]="loginForm.controls.password"
+          />
+          <mat-error *ngIf="loginForm.controls.password.invalid">{{
+            getPasswordErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+    <a
+      (click)="showVerifyEmail = true"
+      *ngIf="!isPasswordValid"
+      class="verification-nav"
+      >Verification mail via captcha</a
+    >
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      (click)="login()"
+      mat-raised-button
+      color="primary"
+      class="action-btn login-btn"
+      [disabled]="loginForm.invalid"
+    >
+      Login
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<app-varify-mail *ngIf="showVerifyEmail"></app-varify-mail>

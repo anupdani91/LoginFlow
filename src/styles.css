@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url("https://wallpapercave.com/wp/s2xVedw.jpg");
+}
+.full-width {
+  display: block !important;
+  width: 100% !important;
+}
+.float-right {
+  float: right;
+}
+.mat-tooltip {
+  font-size: 0.8rem !important;
+}
+.compose-email-card mat-card-header .mat-card-header-text {
+  width: 100% !important;
+}
+
+.field-valid.mat-form-field-appearance-legacy .mat-form-field-underline,
+.field-valid.mat-form-field-appearance-legacy .mat-form-field-ripple,
+.field-valid.mat-form-field-appearance-legacy.mat-focused
+  .mat-form-field-underline,
+.field-valid.mat-form-field-appearance-legacy.mat-focused
+  .mat-form-field-ripple {
+  background-color: green;
+}
